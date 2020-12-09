@@ -9,7 +9,6 @@ namespace Exercicio2
     class Cliente
     {
         public string Nome { get; set; }
-        
 
         public void Deposito(double valor, ContaBancaria conta)
         {
