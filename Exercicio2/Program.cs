@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Exercicio2
 {
@@ -10,9 +7,11 @@ namespace Exercicio2
     {
         static void Main(string[] args)
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+
             CadastraCliente();
             Console.Read();
-            
+            //teste commit
         }
 
         static void CadastraCliente()
@@ -20,13 +19,12 @@ namespace Exercicio2
             Cliente cliente = new Cliente();
 
             Console.Write("Entre o número da conta: ");
-            string numero = Console.ReadLine();
-            ContaBancaria conta = new ContaBancaria(numero, cliente);
-            
+            string numero = Console.ReadLine();  
 
             Console.Write("Entre o nome do titular: ");
             string nome = Console.ReadLine();
-            cliente.Nome = nome;           
+            cliente.Nome = nome;
+            ContaBancaria conta = new ContaBancaria(numero, cliente);
 
             Console.Write("Haverá depósito inicial (s/n)? ");
             string resp = Console.ReadLine();
@@ -35,12 +33,33 @@ namespace Exercicio2
                 Console.Write("Entre o valor de depósito inicial: ");
                 double deposito = double.Parse(Console.ReadLine());
 
-                cliente.Deposito(1000, conta);
+                cliente.Deposito(deposito, conta);
 
             }
-
             conta.InformaDados(1, conta);
 
+            Deposito(cliente, conta);
+
+        }
+
+        static void Deposito(Cliente cliente, ContaBancaria conta)
+        {
+            Console.Write("\nEntre um valor para depósito: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            cliente.Deposito(valor, conta);
+            conta.InformaDados(0, conta);
+
+            Saque(cliente, conta);
+        }
+
+        static void Saque(Cliente cliente, ContaBancaria conta)
+        {
+            Console.Write("\nEntre um valor para saque: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            cliente.Saque(valor, conta);
+            conta.InformaDados(0, conta);
         }
     }
 }

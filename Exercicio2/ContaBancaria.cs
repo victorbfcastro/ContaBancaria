@@ -33,13 +33,13 @@ namespace Exercicio2
             if (inicio == 1)
             {
                 Console.WriteLine("\nDados da Conta:");
-                Console.WriteLine($"Conta: {NumeroConta}, Titular: {NumeroConta}, Saldo: $ {Saldo}");
+                Console.WriteLine($"Conta: {NumeroConta}, Titular: {cliente.NomeTitular}, Saldo: $ {Saldo.ToString("F2")}");
             }
 
             else
             {
-                Console.WriteLine("\nDados da Conta:");
-                Console.WriteLine($"Conta: {NumeroConta}, Titular: {NumeroConta}, Saldo: $ {Saldo}");
+                Console.WriteLine("\nDados da Conta atualizados:");
+                Console.WriteLine($"Conta: {NumeroConta}, Titular: {cliente.NomeTitular}, Saldo: $ {Saldo.ToString("F2")}");
             }
         }
 
