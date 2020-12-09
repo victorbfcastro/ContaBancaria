@@ -45,7 +45,7 @@ namespace Exercicio2
 
         static void Deposito(Cliente cliente, ContaBancaria conta)
         {
-            Console.Write("Entre um valor para depósito: ");
+            Console.Write("\nEntre um valor para depósito: ");
             double valor = double.Parse(Console.ReadLine());
 
             cliente.Deposito(valor, conta);
@@ -56,7 +56,7 @@ namespace Exercicio2
 
         static void Saque(Cliente cliente, ContaBancaria conta)
         {
-            Console.Write("Entre um valor para saque: ");
+            Console.Write("\nEntre um valor para saque: ");
             double valor = double.Parse(Console.ReadLine());
 
             cliente.Saque(valor, conta);
