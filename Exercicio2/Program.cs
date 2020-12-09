@@ -10,9 +10,8 @@ namespace Exercicio2
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
             CadastraCliente();
-            
             Console.Read();
-            
+            //teste commit
         }
 
         static void CadastraCliente()
