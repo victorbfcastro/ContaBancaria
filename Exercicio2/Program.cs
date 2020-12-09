@@ -11,55 +11,70 @@ namespace Exercicio2
 
             CadastraCliente();
             Console.Read();
-            
+
         }
 
         static void CadastraCliente()
         {
-            Cliente cliente = new Cliente();
 
             Console.Write("Entre o número da conta: ");
-            string numero = Console.ReadLine();  
+            string numero = Console.ReadLine();
 
             Console.Write("Entre o nome do titular: ");
             string nome = Console.ReadLine();
-            cliente.Nome = nome;
-            ContaBancaria conta = new ContaBancaria(numero, cliente);
+
+            ContaBancaria conta = new ContaBancaria(numero, nome);
 
             Console.Write("Haverá depósito inicial (s/n)? ");
             string resp = Console.ReadLine();
-            if (resp.ToLower() == "s")
+
+            while (true)
             {
-                Console.Write("Entre o valor de depósito inicial: ");
-                double deposito = double.Parse(Console.ReadLine());
+                if (resp.ToLower() == "s")
+                {
+                    Console.Write("Entre o valor de depósito inicial: ");
+                    double deposito = double.Parse(Console.ReadLine());
 
-                cliente.Deposito(deposito, conta);
-
+                    conta.cliente.Deposito(deposito, conta);
+                    conta.InformaDados(1, conta);
+                    Deposito(0, conta);
+                    break;
+                }
+                else if (resp.ToLower() == "n")
+                {
+                    conta.InformaDados(1, conta);
+                    Deposito(0, conta);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("\nOpção inválida! Utilize 's' ou 'n'.\n");
+                    Console.Write("Haverá depósito inicial (s/n)? ");
+                    resp = Console.ReadLine();
+                }
             }
-            conta.InformaDados(1, conta);
-
-            Deposito(cliente, conta);
 
         }
 
-        static void Deposito(Cliente cliente, ContaBancaria conta)
+        static void Deposito(int inicio, ContaBancaria conta)
         {
             Console.Write("\nEntre um valor para depósito: ");
             double valor = double.Parse(Console.ReadLine());
 
-            cliente.Deposito(valor, conta);
+            conta.cliente.Deposito(valor, conta);
             conta.InformaDados(0, conta);
 
-            Saque(cliente, conta);
+            Saque(conta);
         }
 
-        static void Saque(Cliente cliente, ContaBancaria conta)
+        static void Saque(ContaBancaria conta)
         {
             Console.Write("\nEntre um valor para saque: ");
             double valor = double.Parse(Console.ReadLine());
 
-            cliente.Saque(valor, conta);
+            conta.cliente.Saque(valor, conta);
             conta.InformaDados(0, conta);
+
         }
     }
 }
