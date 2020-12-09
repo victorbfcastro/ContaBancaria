@@ -1,17 +1,19 @@
 ﻿using System;
 
+
 namespace Exercicio2
 {
     class ContaBancaria
     {
-        public Cliente Titular;
+        //public Cliente Titular { get; set; }
         public double Saldo { get; private set; }
         public string NumeroConta { get; private set; }
+        public string NomeTitular { get; set; }
 
         public ContaBancaria(string numeroConta, Cliente cliente)
         {
             NumeroConta = numeroConta;
-            string Titular = cliente.Nome;
+            NomeTitular = cliente.Nome;
         }
 
         public void AtualizaSaldo(double valor)
@@ -31,13 +33,13 @@ namespace Exercicio2
             if (inicio == 1)
             {
                 Console.WriteLine("\nDados da Conta:");
-                Console.WriteLine($"Conta: {NumeroConta}, Titular: {cliente.Titular.Nome}, Saldo: $ {Saldo}");
+                Console.WriteLine($"Conta: {NumeroConta}, Titular: {NumeroConta}, Saldo: $ {Saldo}");
             }
 
             else
             {
                 Console.WriteLine("\nDados da Conta:");
-                Console.WriteLine($"Conta: {NumeroConta}, Titular: {cliente.Titular.Nome}, Saldo: $ {Saldo}");
+                Console.WriteLine($"Conta: {NumeroConta}, Titular: {NumeroConta}, Saldo: $ {Saldo}");
             }
         }
 
