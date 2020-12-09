@@ -11,7 +11,7 @@ namespace Exercicio2
 
             CadastraCliente();
             Console.Read();
-            //teste commit
+            
         }
 
         static void CadastraCliente()
